@@ -1,1 +1,14 @@
-[{"id":"40aacadf-ae71-4bc6-8c86-c0d533f9637e","title":"A day on the camino - day 1"},{"id":"10b82c98-0a50-4f31-a1fc-297456497735","title":"A day on the camino - day 2"},{"id":"8b27b618-047a-46b9-8b61-8afe43cea18b","title":"A day on the camino - day 3"}]
+[
+  {
+    "id": "40aacadf-ae71-4bc6-8c86-c0d533f9637e",
+    "title": "A day on the camino - day 1"
+  },
+  {
+    "id": "10b82c98-0a50-4f31-a1fc-297456497735",
+    "title": "A day on the camino - day 2"
+  },
+  {
+    "id": "8b27b618-047a-46b9-8b61-8afe43cea18b",
+    "title": "A day on the camino - day 3"
+  }
+]
