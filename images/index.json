@@ -1,1 +1,12 @@
-[{"description":"this is the rust logo","id":"c7894bf1-ed6f-440c-811e-1f279d5de102","ext":"svg"},{"description":"this is the sky","id":"676bd0d8-f472-4396-a388-0c4315539303","ext":"avif"}]
+[
+  {
+    "description": "The route of the Camino del Norte",
+    "id": "14e189ed-94c1-44d9-8df1-6340b78b4bad",
+    "ext": "jpg"
+  },
+  {
+    "description": "Looking out of the window at cafe nero",
+    "id": "1bf92c05-1200-461c-aa11-fb152f04415e",
+    "ext": "jpg"
+  }
+]
