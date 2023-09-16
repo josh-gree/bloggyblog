@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+# Images
+<br />
+<br />
+{% for image in index.0 %}
+<a href="/image/raw/{{image.id}}" target="_blank">
+    <img src="/image/raw/{{image.id}}">
+</a>
+<br />
+<br />
+* {{image.description}}
+<br />
+<br />
+{% endfor %}
+{% endblock %}

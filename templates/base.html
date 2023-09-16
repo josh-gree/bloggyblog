@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>BloggyBlog</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Courier+Prime');
+
+        body {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+
+        /* styling paper */
+        #paper {
+            width: 900px;
+            min-height: 700px;
+            /* Set to minimum height to maintain initial height, but allow for expansion */
+            position: relative;
+            margin: 20px auto;
+            padding-top: 40px;
+            padding-bottom: 40px;
+            background-color: white;
+            box-shadow: 0px 0px 5px 0px #888;
+            overflow-y: auto;
+            /* Allow for vertical scrolling if the content exceeds the view height */
+        }
+
+        /* styling red vertical line */
+        #paper::before {
+            content: '';
+            width: 2px;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 60px;
+            background-color: rgba(255, 0, 0, 0.6);
+        }
+
+        /* styling blue horizontal lines */
+        #pattern {
+            min-height: 800px;
+            /* Set to minimum height to maintain initial height, but allow for expansion */
+            background-image: repeating-linear-gradient(white 0px, white 24px, teal 24px, teal 25px);
+        }
+
+        /* styling text content */
+        #content {
+            padding-top: 6px;
+            padding-left: 76px;
+            padding-right: 16px;
+            line-height: 25px;
+            font-family: 'Courier Prime';
+            font-size: 19px;
+            letter-spacing: 1px;
+            word-spacing: 3px;
+            text-align: justify;
+        }
+
+        .centerimg {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .special-char {
+            color: blue;
+        }
+
+        img {
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            width: auto;
+            height: 225px
+        }
+
+        h1 {
+            line-height: 25px;
+            vertical-align: middle;
+            font-family: 'Courier Prime';
+            /* This should match the line-height of #content */
+        }
+
+        a {
+            color: inherit;
+            outline: none;
+        }
+    </style>
+</head>
+
+<body>
+    <a href="/" style="text-decoration: none; color: inherit; outline: none;">
+        <h1>BloggyBlog</h1>
+    </a>
+    <div id="paper">
+        <div id="pattern">
+            <div id="content">
+                <p>{% block content %}{% endblock %}</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
