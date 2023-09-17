@@ -30,6 +30,7 @@ pub struct Article {
 
 impl Article {
     pub async fn from_github(uuid: Uuid, config: &AppConfig) -> Result<Self, String> {
+        println!("Getting Article from GH");
         let owner = config.gh_owner.clone();
         let repo = config.gh_repo.clone();
 

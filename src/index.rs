@@ -26,6 +26,7 @@ where
         serde_json::from_str(index.as_str()).map_err(|e| e.to_string())
     }
     pub async fn from_github(config: &AppConfig, path: String) -> Result<Self, String> {
+        println!("Getting Index from GH");
         let owner = config.gh_owner.clone();
         let repo = config.gh_repo.clone();
 

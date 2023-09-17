@@ -40,6 +40,7 @@ impl Image {
         ext: Option<String>,
         config: &AppConfig,
     ) -> Result<Self, String> {
+        println!("Getting Image from GH");
         let owner = config.gh_owner.clone();
         let repo = config.gh_repo.clone();
 
