@@ -5,7 +5,7 @@ use axum::{
     extract::{Path, Query, State},
     response::{Html, IntoResponse},
     routing::get,
-    Json, Router,
+    Router,
 };
 use axum_extra::either::Either;
 use cached::Cached;
@@ -58,28 +58,23 @@ async fn articles(
 ) -> impl IntoResponse {
     let path = config.article_index_file_path.clone();
     let index = match params.no_cache {
-        Some(no_cache) if no_cache => {
-            if let Ok(index) = Index::<ArticleEntry>::from_github(&config, path).await {
-                Some(index)
-            } else {
-                None
-            }
-        }
-        None | Some(_) => {
-            if let Ok(index) = article_index_from_github_cached(config, path).await {
-                Some(index)
-            } else {
-                None
-            }
-        }
+        Some(no_cache) if no_cache => match Index::<ArticleEntry>::from_github(&config, path).await
+        {
+            Ok(index) => Ok(index),
+            Err(err) => Err(err),
+        },
+        None | Some(_) => match article_index_from_github_cached(config, path).await {
+            Ok(index) => Ok(index),
+            Err(err) => Err(err),
+        },
     };
 
-    if let Some(index) = index {
-        Either::E1(ArticlesTemplate { index })
-    } else {
-        Either::E2(ArticleTemplate {
-            content: "Unable to load index".to_string(),
-        })
+    match index {
+        Ok(index) => Either::E1(ArticlesTemplate { index }),
+        Err(err) => {
+            let err = format!("Unable to load index - {}", err);
+            Either::E2(ArticleTemplate { content: err })
+        }
     }
 }
 
@@ -122,28 +117,22 @@ async fn images(
 ) -> impl IntoResponse {
     let path = config.image_index_file_path.clone();
     let index = match params.no_cache {
-        Some(no_cache) if no_cache => {
-            if let Ok(index) = Index::<ImageEntry>::from_github(&config, path).await {
-                Some(index)
-            } else {
-                None
-            }
-        }
-        None | Some(_) => {
-            if let Ok(index) = image_index_from_github_cached(config, path).await {
-                Some(index)
-            } else {
-                None
-            }
-        }
+        Some(no_cache) if no_cache => match Index::<ImageEntry>::from_github(&config, path).await {
+            Ok(index) => Ok(index),
+            Err(err) => Err(err),
+        },
+        None | Some(_) => match image_index_from_github_cached(config, path).await {
+            Ok(index) => Ok(index),
+            Err(err) => Err(err),
+        },
     };
 
-    if let Some(index) = index {
-        Either::E1(ImagesTemplate { index })
-    } else {
-        Either::E2(ArticleTemplate {
-            content: "Unable to load index".to_string(),
-        })
+    match index {
+        Ok(index) => Either::E1(ImagesTemplate { index }),
+        Err(err) => {
+            let err = format!("Unable to load index - {}", err);
+            Either::E2(ArticleTemplate { content: err })
+        }
     }
 }
 
